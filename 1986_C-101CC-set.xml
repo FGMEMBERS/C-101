@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+
+<!--
+    CASA C-101_Aviojet for FlightGear flight simulator
+    Copyright (C) 2013  Pavel Cueto, Fernando Espinosa
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 3 of the License, or 
+(at your option) any later version. 
+
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details. 
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+-->
+
+<PropertyList include="C-101-base.xml">
+
+<sim>
+	<author>Pavel Cueto, Fernando Espinosa</author>
+	<description>CASA C-101CC Aviojet (Garrett TFE731-5 engine)</description>
+	<aircraft-version>22/05/2013</aircraft-version>
+	<flight-model>jsb</flight-model>
+	<aero>C-101CC-JSBSim</aero>
+	<model>
+		<path archive="y">Aircraft/C-101/Models/CASA_C-101CC.xml</path>
+	</model>
+	<startup>
+		<splash-texture>Aircraft/C-101/C-101CC-splash.png</splash-texture>
+	</startup>
+	<sound>
+		<path>Aircraft/C-101/Sounds/C-101BBCC-sounds.xml</path>
+	</sound>
+	<menubar include="Dialogs/C-101CC-menu.xml"/>
+	<help include="Dialogs/C-101CC-help.xml"/>
+	<submodels> 
+		<serviceable type="bool">true</serviceable>
+		<path>Aircraft/C-101/Systems/Submodels.xml</path>
+	</submodels>
+	<multiplay>
+		<generic>
+			<string n="9" type="string"/>
+			<int n="10" alias="controls/armament/trigger" />
+		</generic>
+	</multiplay>
+
+</sim>
+
+<nasal>
+	<C-101>
+		<file>Aircraft/C-101/Nasal/Liveries-C-101CC.nas</file>
+	</C-101>
+</nasal>
+
+<input>
+	<keyboard>
+		<key n="101">
+			<name>e</name>
+			<desc>Cannon trigger</desc> 
+			<binding>
+				<command>property-assign</command>
+				<property>controls/armament/trigger</property>
+				<value>true</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/armament/trigger</property>
+					<value>false</value>
+				</binding> 
+			</mod-up>
+		</key>
+	</keyboard>
+</input>
+<!--
+<payload>
+		<weight n="3">
+			<name>Pylon 1 L</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+			<opt>
+				<name>R-60 missile</name>
+				<lbs>96</lbs>
+			</opt>
+		</weight>
+</payload>
+-->
+</PropertyList>
